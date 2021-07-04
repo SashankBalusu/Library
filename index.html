@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<style>
+    body {
+        font-family:'Times New Roman', Times, serif;
+        background-color: #2a2b2dff;
+    }
+    form {
+        position:absolute;
+        top:20%;
+        right:50%;
+        left:50%;
+        background-color: #2a2b2dff;
+        display:none;
+        margin-left:-200px;
+        width:400px;
+        height:200px;
+        
+    }
+    label {
+        display:block;
+        color:#2da8d8ff;
+        font-size: 50px;
+        margin: bottom 20px;
+
+    }
+    input {
+        display:block;
+        height:40px;
+        width:100%;
+    }
+    #pages {
+        width:100%;
+    }
+    #read {
+        width:100%;
+    }
+    #submit {
+        font-family: 'Times New Roman', Times, serif;
+        font-size:30px;
+    }
+    .close {
+        float: right;
+    }
+    #readb {
+        position: absolute;
+        bottom:-7%;
+        right:0;
+        width:20px;
+    }
+    .book{
+        font-size:20px;
+        color:#184A45FF;
+        width:200px;
+        height:150px;
+        background-color:#FC766AFF;
+        position:relative;
+    }
+    #head {
+        text-align:center;
+        font-size: 60px;
+        color:#2da8d8ff;
+    }
+    #newbook{
+        position:absolute;
+        top:0;
+        left:0;
+        margin-left:20px;
+        margin-top:55px;
+        width:100px;
+        height: 40px;
+        font-size:18px;
+        font-family: 'Times New Roman', Times, serif;
+        border-radius: 15px;
+
+    }
+</style>
+<html>
+    <body>
+        <h1 id = "head">Your library</h1>
+        <div id = "container"> 
+            <button id = "newbook">New Book</button>
+        </div>
+        <form id = "form" >
+            <label>Book Title:
+                <input type = text id = "title"></input> 
+            </label>
+            <label>Author:
+                <input type = text id = "author"></input> 
+            </label>
+            <label>Pages:
+                <input type = text id = "pages"></input> 
+            </label>
+            <label>Read Yet?
+                <input type = range min = 0 max = 1 id = "read"></input> 
+            </label>
+
+                <input type = button id = "submit" value = "submit" ></input>
+        </form>
+        <script src = script.js></script>
+    </body>
+</html>
