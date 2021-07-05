@@ -47,6 +47,7 @@ submit.addEventListener("click", function (){
     localStorage.setItem("mylibrary", JSON.stringify(myLibrary));
     createDisplay(inc);
     closeButton(inc);
+    check(inc);
     inc++;
 })
 
@@ -67,6 +68,23 @@ function Book(title, author, pages, isRead){
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+
+}
+function check (inc3){
+    let checker = "#check" + inc3;
+    let checkBox = document.querySelector(checker);
+    checkBox.addEventListener("change", function(){
+        if (checkBox.checked){
+            myLibrary[inc3].isRead = true;
+        }
+        else {
+            console.log("hi")
+            myLibrary[inc3].isRead = false;
+        }
+        console.log(myLibrary[inc3].isRead);
+        stats();
+    })
+    
 
 }
 function closeButton(inc2) {
@@ -115,7 +133,8 @@ function createDisplay(i){
     close.classList.add("close")
     let read = document.createElement("input");
     read.type = "checkbox";
-    read.id = "readb"
+    read.setAttribute("id", "check" + i);
+    read.classList.add("readb");
     read.classList.add("readbut");
     if (bookObj.isRead == true){
         read.checked = true;
@@ -149,7 +168,10 @@ function onStart(){
 function totPagesRead(){
     let pagesRead = 0;
     for (let i = 0; i < myLibrary.length; i++){
-        pagesRead += Number(myLibrary[i].pages);
+        if (myLibrary[i].isRead == true){
+            console.log("hi");
+            pagesRead += Number(myLibrary[i].pages);
+        }
     }
     let pagesReadHtml = document.querySelector("#pagesread");
     pagesReadHtml.textContent = "Total pages read: " + pagesRead;
