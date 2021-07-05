@@ -3,6 +3,25 @@
     body {
         font-family:'Times New Roman', Times, serif;
         background-color: #2a2b2dff;
+        color:#2da8d8ff;
+    }
+    #gridCon {
+        display:grid;
+        grid-template-columns: 70% 30%;
+        grid-template-areas:"books stats" ;
+    }
+    #container {
+        display:grid;
+        grid-area:books;
+        grid-template-rows: repeat(3, 30vh);
+        grid-template-columns:repeat(4, 30vh);
+        grid-column-gap: 20px;
+    }
+    #stats {
+        display:grid;
+        grid-area:stats;
+        background:#7b7979;
+        border-radius:10px;
     }
     form {
         position:absolute;
@@ -20,13 +39,14 @@
         display:block;
         color:#2da8d8ff;
         font-size: 50px;
-        margin: bottom 20px;
+        margin-bottom: 20px;
 
     }
     input {
         display:block;
         height:40px;
         width:100%;
+        margin-top:10px;
     }
     #pages {
         width:100%;
@@ -39,21 +59,24 @@
         font-size:30px;
     }
     .close {
-        float: right;
+        position:absolute;
+        right:4%;
+        top:5%;
     }
     #readb {
         position: absolute;
-        bottom:-7%;
-        right:0;
+        bottom:-5%;
+        right:2%;
         width:20px;
     }
     .book{
         font-size:20px;
-        color:#184A45FF;
+        color:#2da8d8ff;
         width:200px;
         height:150px;
-        background-color:#FC766AFF;
+        background-color:#7b7979;
         position:relative;
+        border-radius: 10px;
     }
     #head {
         text-align:center;
@@ -73,29 +96,59 @@
         border-radius: 15px;
 
     }
+    h2, p {
+        margin-left:5px;
+        margin-top:2px;
+    }
+    h1 {
+        margin-left:10px;
+        text-align: center;
+    }
+    #pagesread, #booksread, #booksnotread, #totalbooks, #favauthor {
+        margin-left:20px;
+        
+    }
+    #head:hover, #yourstats:hover {
+        color:red;
+    }
+    
 </style>
 <html>
     <body>
-        <h1 id = "head">Your library</h1>
-        <div id = "container"> 
-            <button id = "newbook">New Book</button>
-        </div>
-        <form id = "form" >
-            <label>Book Title:
-                <input type = text id = "title"></input> 
-            </label>
-            <label>Author:
-                <input type = text id = "author"></input> 
-            </label>
-            <label>Pages:
-                <input type = text id = "pages"></input> 
-            </label>
-            <label>Read Yet?
-                <input type = range min = 0 max = 1 id = "read"></input> 
-            </label>
+        <header>
+            <h1 id = "head">Your library</h1>
+        </header>
+            
+        <div id = "gridCon">
+            <div id = "stats">
+                <h1 id = "yourstats">Your Stats</h1>
+                <h2 id = "pagesread"></h2>
+                <h2 id = "booksread"></h2>
+                <h2 id = "booksnotread"></h2>
+                <h2 id = "totalbooks"></h2>
+                <h2 id = "favauthor"></h2>
+                
+            </div>
+            <div id = "container"> 
+                <button id = "newbook">New Book</button>
+            </div>
+            <form id = "form" >
+                <label>Book Title:
+                    <input type = text id = "title"></input> 
+                </label>
+                <label>Author:
+                    <input type = text id = "author"></input> 
+                </label>
+                <label>Pages:
+                    <input type = text id = "pages"></input> 
+                </label>
+                <label>Read Yet?
+                    <input type = range min = 0 max = 1 id = "read"></input> 
+                </label>
 
-                <input type = button id = "submit" value = "submit" ></input>
-        </form>
-        <script src = script.js></script>
+                    <input type = button id = "submit" value = "submit" ></input>
+            </form>
+            <script src = script.js></script>
+        </div>
     </body>
 </html>
