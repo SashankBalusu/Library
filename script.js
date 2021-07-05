@@ -49,10 +49,12 @@ submit.addEventListener("click", function (){
     closeButton(inc);
     inc++;
 })
-yourLibrary.addEventListener("click", askName());
-yourStats.addEventListener("click", askName());
+
 newBook.addEventListener("click", addBookToLibrary);
+yourLibrary.addEventListener("click", askName);
+yourStats.addEventListener("click", askName);
 function askName(){
+    console.log("hi")
     username = prompt("What's your name?");
     localStorage.setItem("name", username)
     yourLibrary.textContent = username +"'s Library"
@@ -137,6 +139,11 @@ function onStart(){
             createDisplay(i);
         }
     }
+    let user = localStorage.getItem("name");
+    if (user != null){
+        yourLibrary.textContent = user + "'s Library"
+        yourStats.textContent = user + "'s Stats"
+    }
     
 }
 function totPagesRead(){
@@ -191,7 +198,7 @@ function favoriteAuthor (){
         increment = 0;
     }
     favAuthorHtml = document.querySelector("#favauthor");
-    favAuthorHtml.textContent = "Your Favorite Author is: " + myLibrary[index].author;
+    favAuthorHtml.textContent = "Your favorite author is: " + myLibrary[index].author;
     
 }
 function stats(){
